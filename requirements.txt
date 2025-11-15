@@ -1,0 +1,29 @@
+# ====================================================
+# Proyecto Final Integrador Python
+# Sistema de Gestión de Inventario - POO
+# ====================================================
+# 
+# Este proyecto NO requiere dependencias externas.
+# Solo utiliza librerías estándar de Python 3.x
+#
+# Librerías utilizadas (incluidas en Python):
+# - sqlite3 (base de datos)
+# - sys, os (sistema operativo)
+#
+# ====================================================
+# Versión mínima de Python requerida: 3.7+
+# ====================================================
+#
+# Para instalar (aunque no hay dependencias externas):
+# pip install -r requirements.txt
+#
+# ====================================================
+
+# No hay dependencias externas requeridas
+# Este archivo se mantiene para buenas prácticas
+
+# Si en el futuro agregas funcionalidades, aquí irían:
+# pytest==7.4.0              # Para testing
+# black==23.7.0              # Para formateo de código
+# flake8==6.1.0              # Para linting
+# python-dotenv==1.0.0       # Para variables de entorno
