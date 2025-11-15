@@ -79,12 +79,12 @@ Representa un producto del inventario con:
 
 ```python
 producto = Producto(
-    nombre="Cable THHN",
-    marca="Condumex",
+    nombre="Cable Unipolar",
+    marca="IMSA",
     categoria="Cables",
-    precio=150.50,
+    precio=3500.00,
     stock=100,
-    descripcion="Cable calibre 12"
+    descripcion="Cable calibre 4 mm2"
 )
 ```
 
@@ -115,7 +115,7 @@ Maneja toda la interacción con el usuario:
 
 ### Instalación
 ```bash
-git clone https://github.com/jochurru/Proyecto_Final_Integrador_Python.git
+git clone https://github.com/jochurru/Proyecto_Final_PythonFraga.git
 cd Proyecto_Final_Integrador_Python
 ```
 
