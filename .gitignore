@@ -1,0 +1,27 @@
+# Entorno virtual
+venv/
+env/
+.venv/
+
+# Base de datos (opcional - si quieres que cada uno genere la suya)
+inventario.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.log
+*.tmp
