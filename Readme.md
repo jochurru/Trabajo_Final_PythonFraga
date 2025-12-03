@@ -1,243 +1,385 @@
-# 🎓 Proyecto Final Integrador Python
+🎓 Proyecto Final Integrador Python
+Sistema de Gestión de Inventario Eléctrico
+Mostrar imagen
+Mostrar imagen
+Mostrar imagen
+Mostrar imagen
+Sistema completo de gestión de inventario desarrollado como Proyecto Final Integrador del curso de Python, aplicando Programación Orientada a Objetos (POO) y el patrón arquitectónico MVC (Modelo-Vista-Controlador).
+Desarrollado por: Jonatan Churruarin
+Año: 2024/2025
+Versión: 1.0.0
 
-## Sistema de Gestión de Inventario Eléctrico – Versión POO
+📋 Tabla de Contenidos
 
-Sistema de gestión de inventario desarrollado como **Proyecto Final Integrador** aplicando **Programación Orientada a Objetos (POO)** y el patrón **MVC (Modelo-Vista-Controlador)**.
+Descripción
+Demostración
+Características
+Arquitectura
+Instalación
+Uso
+Estructura del Proyecto
+Tecnologías
+Conceptos Aplicados
+Capturas de Pantalla
+Autor
 
----
 
-## 🎯 Mejoras de la Versión POO
+📝 Descripción
+Sistema profesional de gestión de inventario para productos eléctricos que implementa las operaciones CRUD completas (Crear, Leer, Actualizar, Eliminar) con una arquitectura modular y escalable.
+🎯 Objetivos del Proyecto
 
-### ✅ Arquitectura Limpia
-- **Separación de responsabilidades** clara entre capas
-- **Código reutilizable** y mantenible
-- **Escalabilidad** mejorada para futuras funcionalidades
+✅ Aplicar Programación Orientada a Objetos (POO)
+✅ Implementar el patrón MVC (Modelo-Vista-Controlador)
+✅ Desarrollar operaciones CRUD completas
+✅ Crear una interfaz gráfica moderna
+✅ Implementar persistencia de datos con SQLite
+✅ Aplicar validaciones y manejo de errores
+✅ Desarrollar búsqueda avanzada por múltiples criterios
+✅ Crear código modular y mantenible
 
-### ✅ Validaciones Robustas
-- **Properties** de Python para validación automática
-- Manejo de errores mejorado
-- Consistencia en el formato de datos
 
-### ✅ Encapsulación
-- Lógica de negocio separada de la interfaz
-- Acceso a datos centralizado
-- Código más testeable
+🎬 Demostración
+El sistema ofrece dos interfaces:
 
----
+🖥️ Interfaz Gráfica (GUI): App de escritorio moderna con CustomTkinter
+⌨️ Interfaz de Terminal (CLI): Menú interactivo en consola
 
-## 📦 Estructura del Proyecto
 
-```
-Proyecto_Final_Integrador_Python/
-├── main.py                          # Punto de entrada
-├── models/                          # 🗃️ Capa de Modelos
-│   ├── __init__.py
-│   ├── producto.py                  # Clase Producto
-│   └── database.py                  # Clase InventarioDB
-├── controllers/                     # 🎮 Capa de Controladores
-│   ├── __init__.py
-│   └── gestor_inventario.py        # Clase GestorInventario
-└── views/                           # 👁️ Capa de Vistas
-    ├── __init__.py
-    └── menu.py                      # Clase InterfazMenu
-```
+✨ Características
+🏠 Dashboard Inteligente
 
----
+Métricas en tiempo real: Total de productos, stock total, valor del inventario
+Estadísticas visuales: Tarjetas con información clave
+Actualización automática: Los datos se refrescan al modificar el inventario
 
-## 🏗️ Arquitectura del Sistema
+➕ Gestión de Productos
+Agregar Productos
 
-### 📐 Patrón MVC Implementado
+Formulario intuitivo con campos validados
+Campos: nombre, marca, categoría, precio, stock, descripción
+Validaciones automáticas mediante properties de Python
+Confirmación visual de éxito
 
-```
-┌─────────────┐
-│    VISTA    │  InterfazMenu (menu.py)
-│   (View)    │  └─> Interacción con usuario
-└──────┬──────┘
-       │
-       ↓
-┌─────────────┐
-│ CONTROLADOR │  GestorInventario (gestor_inventario.py)
-│(Controller) │  └─> Lógica de negocio
-└──────┬──────┘
-       │
-       ↓
-┌─────────────┐
-│   MODELO    │  Producto + InventarioDB
-│   (Model)   │  └─> Datos y persistencia
-└─────────────┘
-```
+🔍 Consultar Productos
 
----
+Búsqueda rápida por nombre
+Vista en tabla interactiva
+Scroll automático para muchos productos
+Botón "Ver Todos" para listar el inventario completo
 
-## 🧱 Componentes Principales
+✏️ Modificar Productos
 
-### 1️⃣ **Producto** (`models/producto.py`)
-Representa un producto del inventario con:
-- **Validación automática** mediante properties
-- Conversión a/desde tuplas de BD
-- Representación en string formateada
+Sistema de búsqueda inteligente por:
 
-```python
-producto = Producto(
-    nombre="Cable Unipolar",
-    marca="IMSA",
-    categoria="Cables",
-    precio=3500.00,
-    stock=100,
-    descripcion="Cable calibre 4 mm2"
-)
-```
+🆔 ID (búsqueda exacta)
+📝 Nombre (búsqueda parcial)
+🏷️ Marca (filtro)
+📂 Categoría (filtro)
 
-### 2️⃣ **InventarioDB** (`models/database.py`)
-Gestiona toda la interacción con SQLite:
-- Conexión y creación de tablas
-- Operaciones CRUD completas
-- Consultas especializadas
-- Manejo de errores robusto
 
-### 3️⃣ **GestorInventario** (`controllers/gestor_inventario.py`)
-Coordina la lógica de negocio:
-- Validación de datos antes de guardar
-- Procesamiento de consultas
-- Confirmación de operaciones críticas
-- Puente entre vista y modelo
+Vista previa de resultados
+Formulario pre-cargado con datos actuales
+Actualización campo por campo
+Botón verde destacado para guardar cambios
 
-### 4️⃣ **InterfazMenu** (`views/menu.py`)
-Maneja toda la interacción con el usuario:
-- Menús interactivos
-- Captura de entrada
-- Formateo de salida
-- Navegación del sistema
+🗑️ Eliminar Productos
 
----
+Búsqueda avanzada (ID, Nombre, Marca, Categoría)
+Vista previa completa del producto
+Doble confirmación:
 
-## 🚀 Ejecución
+Checkbox de confirmación
+Diálogo de confirmación final
 
-### Instalación
-```bash
-git clone https://github.com/jochurru/Proyecto_Final_PythonFraga.git
+
+Advertencias de seguridad visibles
+Imposible eliminar por error
+
+
+🏗️ Arquitectura
+Patrón MVC Implementado
+┌─────────────────────────────────────────┐
+│           VISTA (View)                  │
+│  ┌─────────────┐    ┌─────────────┐     │
+│  │  GUI (CTk)  │    │  CLI (Menu) │     │
+│  └─────────────┘    └─────────────┘     │
+└─────────────┬───────────────────────────┘
+              │
+              ↓
+┌─────────────────────────────────────────┐
+│      CONTROLADOR (Controller)           │
+│      ┌───────────────────────┐          │
+│      │  GestorInventario     │          │
+│      │  - Lógica de negocio  │          │
+│      │  - Validaciones       │          │
+│      └───────────────────────┘          │
+└─────────────┬───────────────────────────┘
+              │
+              ↓
+┌─────────────────────────────────────────┐
+│         MODELO (Model)                  │
+│  ┌──────────────┐  ┌──────────────┐     │
+│  │  Producto    │  │ InventarioDB │     │
+│  │  (Entidad)   │  │  (SQLite)    │     │
+│  └──────────────┘  └──────────────┘     │
+└─────────────────────────────────────────┘
+Arquitectura Modular
+El código GUI está dividido en 7 módulos independientes:
+ArchivoLíneasResponsabilidadapp_desktop.py~70Coordinador principalmenu_lateral.py~50Menú de navegaciónpantalla_inicio.py~60Dashboardpantalla_agregar.py~80Formulario de altapantalla_consultar.py~90Búsqueda y listadopantalla_modificar.py~180Búsqueda y modificaciónpantalla_eliminar.py~180Búsqueda y eliminación
+Antes: 800 líneas en 1 archivo
+Ahora: 7 archivos modulares de 50-180 líneas
+
+🚀 Instalación
+Requisitos Previos
+
+Python 3.8 o superior
+pip (gestor de paquetes de Python)
+Git (opcional, para clonar el repositorio)
+
+Opción 1: Clonar desde GitHub
+bashgit clone https://github.com/jochurru/Proyecto_Final_Integrador_Python.git
 cd Proyecto_Final_Integrador_Python
-```
+Opción 2: Descargar ZIP
 
-### Ejecutar
-```bash
-python main.py
-```
+Click en el botón verde "Code"
+Selecciona "Download ZIP"
+Extrae el archivo
+Abre la carpeta en terminal
 
----
+Configuración del Entorno
+1. Crear entorno virtual (Recomendado)
+Windows:
+bashpython -m venv venv
+venv\Scripts\activate
+Linux/Mac:
+bashpython3 -m venv venv
+source venv/bin/activate
+2. Instalar dependencias
+bashpip install -r requirements.txt
 
-## 📋 Funcionalidades
+💻 Uso
+Opción 1: Interfaz Gráfica (Recomendado) 🖥️
+bashpython app_desktop.py
+Se abrirá una ventana con la aplicación de escritorio moderna.
+Navegación:
 
-### ➕ Agregar Productos
-- Validación automática de tipos de datos
-- Capitalización de nombres
-- Verificación de valores negativos
+Usa el menú lateral para cambiar entre secciones
+Los botones son grandes e intuitivos
+Tema oscuro por defecto (configurable)
 
-### 🔍 Consultar Productos
-- Ver todos los productos
-- Filtrar por nombre, categoría
-- Vistas especializadas (solo precios, solo stock, etc.)
-- Búsqueda parcial de nombres
+Opción 2: Interfaz de Terminal 📟
+bashpython main.py
+Se ejecutará el menú interactivo en la terminal.
+Navegación:
 
-### ✏️ Modificar Productos
-- Modificación campo por campo
-- Validación según tipo de dato
-- Confirmación de cambios
+Ingresa el número de la opción deseada
+Sigue las instrucciones en pantalla
+Los datos se validan automáticamente
 
-### 🗑️ Eliminar Productos
-- Vista previa del producto
-- Confirmación obligatoria
-- Verificación de existencia
 
----
+📁 Estructura del Proyecto
+Proyecto_Final_Integrador_Python/
+│
+├── 📄 main.py                          # CLI - Interfaz de terminal
+├── 📄 app_desktop.py                   # GUI - Aplicación de escritorio (principal)
+│
+├── 📂 models/                          # MODELO (Datos y Persistencia)
+│   ├── __init__.py
+│   ├── producto.py                     # Clase Producto con validaciones
+│   └── database.py                     # Clase InventarioDB (SQLite)
+│
+├── 📂 controllers/                     # CONTROLADOR (Lógica de Negocio)
+│   ├── __init__.py
+│   └── gestor_inventario.py           # Clase GestorInventario
+│
+├── 📂 views/                           # VISTA (Interfaces)
+│   ├── __init__.py
+│   ├── menu.py                         # Interfaz CLI
+│   │
+│   └── 📂 gui/                         # Interfaz GUI (Modularizada)
+│       ├── __init__.py
+│       ├── menu_lateral.py             # Menú de navegación
+│       ├── pantalla_inicio.py          # Dashboard
+│       ├── pantalla_agregar.py         # Formulario agregar
+│       ├── pantalla_consultar.py       # Búsqueda y tabla
+│       ├── pantalla_modificar.py       # Búsqueda y modificación
+│       └── pantalla_eliminar.py        # Búsqueda y eliminación
+│
+├── 📄 inventario.db                    # Base de datos SQLite (auto-generada)
+├── 📄 requirements.txt                 # Dependencias del proyecto
+├── 📄 .gitignore                       # Archivos ignorados por Git
+└── 📄 README.md                        # Este archivo
 
-## 🧠 Ventajas de la Versión POO
+🛠️ Tecnologías
+Lenguaje y Librerías
+TecnologíaVersiónUsoPython3.8+Lenguaje principalSQLite33.xBase de datos embebidaCustomTkinter5.2.2Interfaz gráfica modernaTkinterIncluidoBase para CustomTkinter
+Paradigmas y Patrones
 
-| Aspecto | Versión Funcional | Versión POO |
-|---------|------------------|-------------|
-| **Mantenibilidad** | Media | Alta |
-| **Reutilización** | Baja | Alta |
-| **Testabilidad** | Difícil | Fácil |
-| **Escalabilidad** | Limitada | Excelente |
-| **Validaciones** | Manuales | Automáticas |
-| **Separación de conceptos** | Parcial | Total |
+POO (Programación Orientada a Objetos)
+MVC (Modelo-Vista-Controlador)
+Modularización
+Separación de Responsabilidades
 
----
 
-## 🔮 Próximas Mejoras Sugeridas
+🎓 Conceptos Aplicados
+1. Programación Orientada a Objetos
+Encapsulación
+pythonclass Producto:
+    def __init__(self, nombre, marca, ...):
+        self._nombre = nombre  # Atributo privado
+        self._precio = precio
+Properties con Validación
+python@property
+def precio(self):
+    return self._precio
 
-- [ ] **Tests unitarios** con `pytest`
-- [ ] **Interfaz gráfica** con Tkinter/PyQt
-- [ ] **API REST** con FastAPI/Flask
-- [ ] **Exportación** a Excel/CSV
-- [ ] **Sistema de usuarios** y permisos
-- [ ] **Historial de cambios** (auditoría)
-- [ ] **Backup automático** de BD
-- [ ] **Reportes** y estadísticas
+@precio.setter
+def precio(self, valor):
+    if valor < 0:
+        raise ValueError("El precio no puede ser negativo")
+    self._precio = float(valor)
+Métodos de Clase
+python@classmethod
+def from_tuple(cls, tupla):
+    return cls(id_producto=tupla[0], nombre=tupla[1], ...)
+2. Patrón MVC
 
----
+Modelo: Maneja datos y lógica de persistencia
+Vista: Presenta información al usuario
+Controlador: Coordina Modelo y Vista
 
-## 🧪 Testing
+3. Principios SOLID
 
-Para agregar tests unitarios:
+SRP (Single Responsibility Principle): Cada clase tiene una responsabilidad
+OCP (Open/Closed Principle): Abierto a extensión, cerrado a modificación
+DIP (Dependency Inversion): Depender de abstracciones
 
-```python
-# tests/test_producto.py
-import pytest
-from models.producto import Producto
+4. Buenas Prácticas
+✅ Validación de datos en múltiples capas
+✅ Manejo de errores con try-except
+✅ Docstrings en funciones y clases
+✅ Nombres descriptivos de variables
+✅ Código modular y reutilizable
+✅ Separación de responsabilidades
 
-def test_crear_producto_valido():
-    p = Producto("Cable", "Marca", "Cables", 100, 50, "Desc")
-    assert p.nombre == "Cable"
-    assert p.precio == 100
+📊 Base de Datos
+Esquema de la tabla productos
+sqlCREATE TABLE productos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    marca TEXT,
+    categoria TEXT,
+    precio REAL NOT NULL,
+    stock INTEGER NOT NULL,
+    descripcion TEXT
+);
+CampoTipoRestricciónDescripciónidINTEGERPRIMARY KEYIdentificador úniconombreTEXTNOT NULLNombre del productomarcaTEXT-Marca/fabricantecategoriaTEXT-Categoría del productoprecioREALNOT NULLPrecio unitariostockINTEGERNOT NULLCantidad disponibledescripcionTEXT-Descripción detallada
 
-def test_precio_negativo_falla():
-    with pytest.raises(ValueError):
-        Producto("Cable", "Marca", "Cables", -100, 50, "Desc")
-```
+📸 Capturas de Pantalla
+Dashboard Principal
+Mostrar imagen
+Vista principal con métricas en tiempo real
+Agregar Producto
+Mostrar imagen
+Formulario para dar de alta productos
+Búsqueda Avanzada
+Mostrar imagen
+Sistema de búsqueda por múltiples criterios
+Modificar Producto
+Mostrar imagen
+Edición de productos existentes
+Eliminar con Confirmación
+Mostrar imagen
+Eliminación segura con doble confirmación
 
----
 
-## 👨‍💻 Autor
 
-**Jonatan Churruarin**  
-Proyecto Final Integrador - Python  
+🧪 Testing (Opcional)
+Para ejecutar tests unitarios:
+bash# Instalar pytest
+pip install pytest
 
-Técnico autodidacta especializado en:
-- Desarrollo de sistemas con Python
-- Arquitectura de software limpia
-- Refactorización y optimización de código
-- Implementación de patrones de diseño (MVC, POO)
+# Ejecutar tests
+pytest tests/ -v
 
----
+🚀 Mejoras Futuras
+Funcionalidades Planificadas
 
-## 📄 Licencia
+ 📊 Exportación a Excel/CSV
+ 📈 Gráficos de estadísticas con matplotlib
+ 👥 Sistema de usuarios y permisos
+ 📜 Historial de cambios (auditoría)
+ 💾 Backup automático de base de datos
+ 🌐 API REST con FastAPI
+ 📄 Generación de reportes en PDF
+ 🔔 Notificaciones de stock bajo
+ 📱 Versión móvil con Kivy
+ ☁️ Sincronización en la nube
 
-Este proyecto está disponible como material educativo y de referencia.
 
----
+👨‍💻 Autor
+Jonatan Churruarin
+Proyecto Final Integrador - Curso de Python
+Especialización
 
-## 🤝 Contribuciones
+Desarrollo de sistemas con Python
+Arquitectura de software limpia (MVC, POO)
+Bases de datos relacionales (SQLite, MySQL)
+Interfaces gráficas de usuario (GUI)
+Modularización y buenas prácticas
 
-Las contribuciones son bienvenidas. Por favor:
-1. Fork el proyecto
-2. Crea una rama para tu feature
-3. Commit tus cambios
-4. Push a la rama
-5. Abre un Pull Request
+Contacto
 
----
+🐙 GitHub: @jochurru
+📧 Email: [jonatan.churruarin@outlook.com]
+💼 LinkedIn: [www.linkedin.com/in/jonatan-churruarin]
 
-## 📧 Contacto
 
-Para consultas o sugerencias sobre este Proyecto Final Integrador.
+📄 Licencia
+Este proyecto fue desarrollado como trabajo académico para el curso de Python.
+Uso educativo y de portfolio.
 
----
+🙏 Agradecimientos
 
-## ⭐ Estado del Proyecto
+A mi profesora de Python por la guía durante el curso
+A la comunidad de Python por la excelente documentación
+A los desarrolladores de CustomTkinter por la librería
+A todos los que contribuyeron con feedback
 
-✅ **Proyecto Final Integrador Completado**  
-🎓 **Aplicación práctica de POO y MVC**  
-🛠️ **Listo para extensiones**  
-📚 **Documentado para uso educativo**  
-🎯 **Ejemplo de buenas prácticas en Python**
+
+⭐ Estado del Proyecto
+✅ Proyecto Final Integrador Completado
+🎓 Aplicación práctica de POO y MVC
+🛠️ Funcional y listo para producción
+📚 Completamente documentado
+🎯 Código profesional y mantenible
+🏆 Listo para presentación académica
+
+📞 Soporte
+Si encuentras algún problema o tienes sugerencias:
+
+Abre un Issue en GitHub
+Contacta al autor por email
+Revisa la documentación
+
+
+🎯 Instalación Rápida (TL;DR)
+bash# Clonar
+git clone https://github.com/jochurru/Proyecto_Final_Integrador_Python.git
+cd Proyecto_Final_Integrador_Python
+
+# Instalar
+pip install -r requirements.txt
+
+# Ejecutar
+python app_desktop.py
+
+<div align="center">
+Fecha de entrega: [Completar]
+Versión: 1.0.0
+Python: 3.8+
+Última actualización: Diciembre 2024
+
+⭐ Si este proyecto te resultó útil, dale una estrella ⭐
+Desarrollado con ❤️ por Jonatan Churruarin
+</div>
