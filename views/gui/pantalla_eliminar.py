@@ -227,58 +227,80 @@ class PantallaEliminar:
         for widget in self.detalles_frame.winfo_children():
             widget.destroy()
         
+        # Crear scrollable frame para que todo sea visible
+        scrollable = ctk.CTkScrollableFrame(self.detalles_frame, width=600, height=400)
+        scrollable.pack(fill="both", expand=True, padx=20, pady=10)
+        
         # Advertencia
         ctk.CTkLabel(
-            self.detalles_frame,
+            scrollable,
             text="⚠️ ADVERTENCIA: Esta acción no se puede deshacer",
-            font=ctk.CTkFont(size=16, weight="bold"),
+            font=ctk.CTkFont(size=18, weight="bold"),
             text_color="red"
         ).pack(pady=20)
         
         # Frame de información
-        info_frame = ctk.CTkFrame(self.detalles_frame)
-        info_frame.pack(pady=20, padx=50, fill="x")
+        info_frame = ctk.CTkFrame(scrollable)
+        info_frame.pack(pady=20, padx=20, fill="x")
         
         # Detalles del producto
         detalles = [
-            ("ID", producto.id),
-            ("Nombre", producto.nombre),
-            ("Marca", producto.marca),
-            ("Categoría", producto.categoria),
-            ("Precio", f"${producto.precio:.2f}"),
-            ("Stock", f"{producto.stock} unidades"),
-            ("Descripción", producto.descripcion)
+            ("🆔 ID", producto.id),
+            ("📦 Nombre", producto.nombre),
+            ("🏷️ Marca", producto.marca),
+            ("📂 Categoría", producto.categoria),
+            ("💰 Precio", f"${producto.precio:.2f}"),
+            ("📊 Stock", f"{producto.stock} unidades"),
+            ("📝 Descripción", producto.descripcion)
         ]
         
         for label, valor in detalles:
+            detalle_frame = ctk.CTkFrame(info_frame)
+            detalle_frame.pack(pady=5, padx=10, fill="x")
+            
             ctk.CTkLabel(
-                info_frame,
-                text=f"{label}: {valor}",
-                font=ctk.CTkFont(size=14)
-            ).pack(pady=5, anchor="w", padx=20)
+                detalle_frame,
+                text=f"{label}:",
+                font=ctk.CTkFont(size=14, weight="bold"),
+                width=150,
+                anchor="w"
+            ).pack(side="left", padx=5)
+            
+            ctk.CTkLabel(
+                detalle_frame,
+                text=str(valor),
+                font=ctk.CTkFont(size=14),
+                anchor="w"
+            ).pack(side="left", padx=5)
+        
+        # Separador
+        ctk.CTkLabel(scrollable, text="─" * 50).pack(pady=20)
         
         # Guardar el ID
         self.producto_eliminar_id = producto.id
         
-        # Checkbox de confirmación
+        # Checkbox de confirmación (MÁS GRANDE)
         self.check_confirmar = ctk.CTkCheckBox(
-            self.detalles_frame,
+            scrollable,
             text="✅ Confirmo que deseo eliminar este producto",
-            font=ctk.CTkFont(size=14)
+            font=ctk.CTkFont(size=16, weight="bold"),
+            checkbox_width=30,
+            checkbox_height=30
         )
-        self.check_confirmar.pack(pady=20)
+        self.check_confirmar.pack(pady=30)
         
-        # Botón eliminar
-        ctk.CTkButton(
-            self.detalles_frame,
+        # Botón eliminar (MÁS GRANDE Y VISIBLE)
+        btn_eliminar = ctk.CTkButton(
+            scrollable,
             text="🗑️ ELIMINAR PRODUCTO",
             command=self.confirmar_eliminacion,
-            height=50,
-            width=300,
-            font=ctk.CTkFont(size=18, weight="bold"),
+            height=60,
+            width=400,
+            font=ctk.CTkFont(size=20, weight="bold"),
             fg_color="red",
             hover_color="darkred"
-        ).pack(pady=10)
+        )
+        btn_eliminar.pack(pady=30)
     
     def confirmar_eliminacion(self):
         """Confirma y elimina el producto"""
